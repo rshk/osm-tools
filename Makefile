@@ -1,7 +1,12 @@
 GCC = gcc
 TARGETS = osmconvert osmfilter osmupdate
+PREFIX = /usr/local
 
 all: $(TARGETS)
+
+install: $(TARGETS)
+	mkdir -p $(PREFIX)/bin
+	cp -t $(PREFIX)/bin/ $(TARGETS)
 
 clean:
 	rm $(TARGETS)
@@ -14,4 +19,3 @@ osmfilter: osmfilter.c
 
 osmupdate: osmupdate.c
 	$(GCC) $< -o $@
-
